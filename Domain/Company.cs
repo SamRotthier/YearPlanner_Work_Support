@@ -1,3 +1,21 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿
+namespace YearPlanner.BL.Domain;
 
-Console.WriteLine("Hello, World!");
+public class Company
+{
+    public int CompanyId { get; set; }
+    public string CompanyName { get; set; }
+    
+    public ICollection<Task>? Tasks { get; set; }
+
+    public Company(string companyName)
+    {
+        CompanyName = companyName;
+    }
+
+    public Company(string companyName, List<Task> tasks)
+    {
+        CompanyName = companyName;
+        Tasks = tasks;
+    }
+}

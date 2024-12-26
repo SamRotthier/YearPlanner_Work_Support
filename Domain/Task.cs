@@ -1,4 +1,4 @@
-namespace Domain;
+namespace YearPlanner.BL.Domain;
 
 public class Task
 {
