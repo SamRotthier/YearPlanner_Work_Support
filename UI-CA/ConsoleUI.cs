@@ -1,4 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
+using YearPlanner.BL.Domain;
+using Task = YearPlanner.BL.Domain.Task;
+
 
 namespace YearPlanner.UI.CA;
 
@@ -72,7 +75,36 @@ public class ConsoleUI
 
     private void DisplayPlanningForAllCustomers()
     {
-        throw new NotImplementedException();
+        //test data
+        Task testTask1 = new Task("TestTask1", new DateTime(2024,02,11), "Testing the prints");
+        Task testTask2 = new Task("TestTask2", new DateTime(2024,05,11), "Testing the prints2");
+        List<Task> testTasks = new List<Task>();
+        testTasks.Add(testTask1);
+        testTasks.Add(testTask2);
+        Company testCustomer1 = new Company("TestCustomer1", testTasks);
+
+        string[] months = new string[12];
+        foreach (Task task in testTasks)
+        {
+            int dueMonth = task.ActionDate.Month;
+            months[dueMonth - 1] = "x";
+        }
+        string customerName = testCustomer1.CompanyName.PadRight(13); // Ensure the customer name is fixed-width
+        string[] formattedMonths = months.Select(m => (m ?? "").PadLeft(9)).ToArray(); // Each column is 9 characters wide
+
+        Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------");
+        Console.WriteLine(" Customer Name | January   | February  | March     | April     | May       | June      | July      | August    | September | October   | November  | December  | ");
+//Console.WriteLine(" Customer Name | January | February | March | April | May | June | July | August | September | October | November | December | ");
+//Console.WriteLine("               |         |          |       |       |     |      |      |        |           |         |          |          | ");
+        Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------");
+        Console.WriteLine($" {customerName} | {string.Join(" | ", formattedMonths)} | ");
+        foreach (Task task in testTasks)
+        {
+            int count = 1;
+            Console.WriteLine($"Task {count} Description: {task.TaskDescription}");
+            count++;
+        }
+        
     }
 
 
