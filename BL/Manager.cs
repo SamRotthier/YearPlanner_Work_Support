@@ -1,11 +1,19 @@
+using YearPlanner.BL.Domain;
 using YearPlanner.DAL;
 
 namespace YearPlanner.BL;
 
 public class Manager : IManager
 {
+    private IRepository _repository;
     public Manager(IRepository repository)
     {
-        throw new NotImplementedException();
+        _repository = repository;
+        InMemoryRepository.Seed();
+    }
+    
+    public List<Company> GetAllCompanies()
+    {
+        return _repository.ReadAllCompanies();
     }
 }

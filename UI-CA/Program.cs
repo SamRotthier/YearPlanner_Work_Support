@@ -8,7 +8,7 @@ using YearPlanner.UI.CA;
 IRepository repository = new InMemoryRepository();
 IManager manager = new Manager(repository);
 
-ConsoleUI consoleUi = new ConsoleUI();
+ConsoleUI consoleUi = new ConsoleUI(manager);
 consoleUi.Run();
 
 
