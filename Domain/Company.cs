@@ -6,16 +6,16 @@ public class Company
     public int CompanyId { get; set; }
     public string CompanyName { get; set; }
     
-    public ICollection<Assignment>? Tasks { get; set; }
+    public ICollection<Assignment>? Assignments { get; set; }
 
     public Company(string companyName)
     {
         CompanyName = companyName;
     }
 
-    public Company(string companyName, List<Assignment> tasks)
+    public Company(string companyName, List<Assignment> assignments)
     {
         CompanyName = companyName;
-        Tasks = tasks;
+        Assignments = assignments;
     }
 }

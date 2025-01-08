@@ -1,0 +1,36 @@
+  "Companies": [
+        {
+            "CompanyId": 1,
+            "CompanyName": "Customer1",
+            "Assignments": [{
+		"AssignmentId": 1,
+		"AssignmentName":"Updates",
+		"ActionDate":"2024-02-11",
+		"AssignmentDescription":"Updates to the system" 
+		},
+		"AssignmentId": 2,
+		"AssignmentName":"Cleaning",
+		"ActionDate":"2024-05-11",
+		"AssignmentDescription":"Cleaning of the system" 
+		}	
+        ]},
+        {
+            "CompanyId": 2,
+            "CompanyName": "Customer2",
+	    "Assignments": [{
+		"AssignmentId": 3,
+		"AssignmentName":"Certificates",
+		"ActionDate":"2024-11-11",
+		"AssignmentDescription":"Certificates renewal" 			
+        	},
+		"AssignmentId": 4,
+		"AssignmentName":"Tests",
+		"ActionDate":"2024-01-11",
+		"AssignmentDescription":"General tests" 			
+        	},
+		"AssignmentId": 5,
+		"AssignmentName":"Updates",
+		"ActionDate":"2024-02-11",
+		"AssignmentDescription":"Updates to the system" 
+		}
+	]}]

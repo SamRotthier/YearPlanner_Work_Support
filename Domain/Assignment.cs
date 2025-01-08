@@ -2,21 +2,21 @@ namespace YearPlanner.BL.Domain;
 
 public class Assignment
 {
-    public int TaskId { get; set; }
-    public string TaskName { get; set; }
+    public int AssignmentId { get; set; }
+    public string AssignmentName { get; set; }
     public DateTime ActionDate { get; set; }
-    public string TaskDescription { get; set; }
+    public string AssignmentDescription { get; set; }
     
 
-    public Assignment(string taskName)
+    public Assignment(string assignmentName)
     {
-        TaskName = taskName;
+        AssignmentName = assignmentName;
     }
 
-    public Assignment(string taskName, DateTime actionDate, string taskDescription)
+    public Assignment(string assignmentName, DateTime actionDate, string assignmentDescription)
     {
-        TaskName = taskName;
+        AssignmentName = assignmentName;
         ActionDate = actionDate;
-        TaskDescription = taskDescription;
+        AssignmentDescription = assignmentDescription;
     }
 }

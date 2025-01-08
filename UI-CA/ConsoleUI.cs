@@ -85,9 +85,9 @@ public class ConsoleUI
         foreach (Company company in companies)
         {
             string[] months = new string[12];
-            foreach (Assignment task in company.Tasks)
+            foreach (Assignment assignment in company.Assignments)
             {
-                int dueMonth = task.ActionDate.Month;
+                int dueMonth = assignment.ActionDate.Month;
                 months[dueMonth - 1] = "x";
             }
             string customerName = company.CompanyName.PadRight(13); // Ensure the customer name is fixed-width
@@ -95,20 +95,12 @@ public class ConsoleUI
             Console.WriteLine($" {customerName} | {string.Join(" | ", formattedMonths)} | ");
             
             int count = 1;
-            foreach (Assignment task in company.Tasks)
+            foreach (Assignment task in company.Assignments)
             {
-                Console.WriteLine($"Task {count} Description: {task.TaskDescription}");
+                Console.WriteLine($"Task {count} Description: {task.AssignmentDescription}");
                 count++;
             }
         }
-        
-
-
-//Console.WriteLine(" Customer Name | January | February | March | April | May | June | July | August | September | October | November | December | ");
-//Console.WriteLine("               |         |          |       |       |     |      |      |        |           |         |          |          | ");
-        
-        
-        
     }
 
 
