@@ -1,3 +1,4 @@
+using System.Text.Json;
 using YearPlanner.BL.Domain;
 
 
@@ -7,6 +8,7 @@ namespace YearPlanner.DAL;
 public class InMemoryRepository: IRepository
 {
     private static List<Company> _companies = new List<Company>();
+    /*
     public static void Seed()
     {
         //generate test data
@@ -31,6 +33,29 @@ public class InMemoryRepository: IRepository
         Company customer2 = new Company("Customer2", tasksC2);
         _companies.Add(customer2);
     }
+    */
+    
+    public static void SeedWithJson()
+    {
+        string jsonString  = File.ReadAllText("ExampleJson2.json");
+        var options = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true, // Allow camelCase in JSON
+            IncludeFields = true, // Enable field matching
+            WriteIndented = true               // For debugging
+        };
+        Console.WriteLine(jsonString);
+        try
+        {
+            _companies = JsonSerializer.Deserialize<List<Company>>(jsonString, options);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Deserialization failed: {ex.Message}");
+            Console.WriteLine(ex.StackTrace);
+        }
+    }
+
     
     public List<Company> ReadAllCompanies()
     {

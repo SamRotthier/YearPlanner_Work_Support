@@ -9,7 +9,8 @@ public class Manager : IManager
     public Manager(IRepository repository)
     {
         _repository = repository;
-        InMemoryRepository.Seed();
+        //InMemoryRepository.Seed();
+        InMemoryRepository.SeedWithJson();
     }
     
     public List<Company> GetAllCompanies()

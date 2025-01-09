@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace YearPlanner.BL.Domain;
 
 public class Assignment
@@ -7,6 +9,22 @@ public class Assignment
     public DateTime ActionDate { get; set; }
     public string AssignmentDescription { get; set; }
     
+
+    
+    [JsonConstructor]
+    public Assignment(int AssignmentId,string AssignmentName, DateTime ActionDate, string AssignmentDescription)
+    {
+        this.AssignmentId = AssignmentId;
+        this.AssignmentName = AssignmentName;
+        this.ActionDate = ActionDate;
+        this.AssignmentDescription = AssignmentDescription;
+    }
+    
+    /*
+    public Assignment()
+    {
+        
+    }
 
     public Assignment(string assignmentName)
     {
@@ -19,4 +37,5 @@ public class Assignment
         ActionDate = actionDate;
         AssignmentDescription = assignmentDescription;
     }
+    */
 }
