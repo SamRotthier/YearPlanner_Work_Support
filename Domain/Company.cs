@@ -12,9 +12,9 @@ public class Company
     
     public Company(int companyId, string companyName, List<Assignment> assignments)
     {
-        this.CompanyId = companyId;
-        this.CompanyName = companyName;
-        this.Assignments = assignments ?? new List<Assignment>();
+        CompanyId = companyId;
+        CompanyName = companyName;
+        Assignments = assignments ?? new List<Assignment>();
     }
     
     
