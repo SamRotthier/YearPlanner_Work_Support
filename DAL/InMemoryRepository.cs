@@ -1,14 +1,14 @@
 using System.Text.Json;
 using YearPlanner.BL.Domain;
-
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 
 namespace YearPlanner.DAL;
 
 public class InMemoryRepository: IRepository
 {
-    private static List<Company> _companies = new List<Company>();
-    /*
+    private static ListOfCompanies _listOfCompanies = new ListOfCompanies();
+    
     public static void Seed()
     {
         //generate test data
@@ -20,7 +20,7 @@ public class InMemoryRepository: IRepository
         tasksC1.Add(task1C1);
         tasksC1.Add(task2C1);
         Company customer1 = new Company("Customer1", tasksC1);
-        _companies.Add(customer1);
+        _listOfCompanies.Companies.Add(customer1);
         
         //Customer2
         Assignment task1C2 = new Assignment("Certificates", new DateTime(2024,11,11), "Certificates renewal");
@@ -31,35 +31,27 @@ public class InMemoryRepository: IRepository
         tasksC2.Add(task2C2);
         tasksC2.Add(task3C2);
         Company customer2 = new Company("Customer2", tasksC2);
-        _companies.Add(customer2);
+        _listOfCompanies.Companies.Add(customer2);
     }
-    */
+
     
     public static void SeedWithJson()
     {
-        string jsonString  = File.ReadAllText("ExampleJson2.json");
-        var options = new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true, // Allow camelCase in JSON
-            IncludeFields = true, // Enable field matching
-            WriteIndented = true               // For debugging
-        };
-        Console.WriteLine(jsonString);
+        string jsonString  = File.ReadAllText("ExampleJson.json");
         try
         {
-            _companies = JsonSerializer.Deserialize<List<Company>>(jsonString, options);
+            _listOfCompanies = JsonSerializer.Deserialize<ListOfCompanies>(jsonString);
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Deserialization failed: {ex.Message}");
-            Console.WriteLine(ex.StackTrace);
         }
     }
 
     
-    public List<Company> ReadAllCompanies()
+    public ListOfCompanies ReadAllCompanies()
     {
-        return _companies;
+        return _listOfCompanies;
     }
 
 }

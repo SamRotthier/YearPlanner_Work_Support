@@ -10,20 +10,17 @@ public class Company
     
     public ICollection<Assignment> Assignments { get; set; }
     
-
-
-    [JsonConstructor]
-    public Company(int CompanyId, string CompanyName, List<Assignment> Assignments)
+    public Company(int companyId, string companyName, List<Assignment> assignments)
     {
-        this.CompanyId = CompanyId;
-        this.CompanyName = CompanyName;
-        this.Assignments = Assignments ?? new List<Assignment>();
+        this.CompanyId = companyId;
+        this.CompanyName = companyName;
+        this.Assignments = assignments ?? new List<Assignment>();
     }
     
-    /*
+    
     public Company()
     {
-        Assignments = new List<Assignment>();
+        
     }
 
     public Company(string companyName)
@@ -36,5 +33,5 @@ public class Company
         CompanyName = companyName;
         Assignments = assignments;
     }
-    */
+
 }

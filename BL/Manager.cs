@@ -13,7 +13,7 @@ public class Manager : IManager
         InMemoryRepository.SeedWithJson();
     }
     
-    public List<Company> GetAllCompanies()
+    public ListOfCompanies GetAllCompanies()
     {
         return _repository.ReadAllCompanies();
     }

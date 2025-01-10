@@ -9,18 +9,16 @@ public class Assignment
     public DateTime ActionDate { get; set; }
     public string AssignmentDescription { get; set; }
     
-
     
-    [JsonConstructor]
-    public Assignment(int AssignmentId,string AssignmentName, DateTime ActionDate, string AssignmentDescription)
+    public Assignment(int assignmentId,string assignmentName, DateTime actionDate, string assignmentDescription)
     {
-        this.AssignmentId = AssignmentId;
-        this.AssignmentName = AssignmentName;
-        this.ActionDate = ActionDate;
-        this.AssignmentDescription = AssignmentDescription;
+        AssignmentId = assignmentId;
+        AssignmentName = assignmentName;
+        ActionDate = actionDate;
+        AssignmentDescription = assignmentDescription;
     }
     
-    /*
+
     public Assignment()
     {
         
@@ -37,5 +35,4 @@ public class Assignment
         ActionDate = actionDate;
         AssignmentDescription = assignmentDescription;
     }
-    */
 }

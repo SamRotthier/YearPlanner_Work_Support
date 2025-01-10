@@ -76,13 +76,13 @@ public class ConsoleUI
 
     private void DisplayPlanningForAllCustomers()
     {
-        List<Company> companies = _manager.GetAllCompanies();
+        ListOfCompanies listOfCompanies = _manager.GetAllCompanies();
         
         Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------");
         Console.WriteLine(" Customer Name | January   | February  | March     | April     | May       | June      | July      | August    | September | October   | November  | December  | ");
         Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------");
 
-        foreach (Company company in companies)
+        foreach (Company company in listOfCompanies.Companies)
         {
             string[] months = new string[12];
             foreach (Assignment assignment in company.Assignments)

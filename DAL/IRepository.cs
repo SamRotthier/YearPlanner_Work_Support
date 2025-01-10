@@ -4,5 +4,5 @@ namespace YearPlanner.DAL;
 
 public interface IRepository
 {
-    List<Company> ReadAllCompanies();
+    ListOfCompanies ReadAllCompanies();
 }
