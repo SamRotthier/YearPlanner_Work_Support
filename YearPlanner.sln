@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{925E4792-5220-4B61-ACA9-9EC7756C2109}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI-WPF", "UI-WPF\UI-WPF.csproj", "{11AD3C39-B48E-4025-AA2F-E233539D547D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{925E4792-5220-4B61-ACA9-9EC7756C2109}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{925E4792-5220-4B61-ACA9-9EC7756C2109}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{925E4792-5220-4B61-ACA9-9EC7756C2109}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11AD3C39-B48E-4025-AA2F-E233539D547D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11AD3C39-B48E-4025-AA2F-E233539D547D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11AD3C39-B48E-4025-AA2F-E233539D547D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11AD3C39-B48E-4025-AA2F-E233539D547D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
