@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Year Planner" Height="450" Width="800">
 
-    </Grid>
+    <DockPanel Margin="1">
+        <Menu DockPanel.Dock="Top">
+            <Menu.Items>
+                <MenuItem Header="Options">
+                    <MenuItem Header="New" Command="{Binding }"/>
+                    <MenuItem Header="Open" Command="{Binding }"/>
+                    <MenuItem Header="Save" Command="{Binding }"/>
+                    <MenuItem Header="Save As" Command="{Binding }"/>
+                </MenuItem>
+                <MenuItem Header="Help" DataContext="{Binding }">
+                    <MenuItem Header="About" Command="{Binding }"/>
+                </MenuItem>
+            </Menu.Items>
+        </Menu>
+        <DockPanel>
+            <TextBlock DockPanel.Dock="Bottom" 
+                       DataContext="{Binding }"
+                       Text="{Binding }"/>
+            <TextBox DockPanel.Dock="Top" VerticalScrollBarVisibility="Visible"></TextBox>
+        </DockPanel>
+    </DockPanel>
 </Window>
