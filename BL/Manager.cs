@@ -17,4 +17,10 @@ public class Manager : IManager
     {
         return _repository.ReadAllCompanies();
     }
+
+    public void AddCompany(string companyName)
+    {
+        Company company = new Company(companyName);
+        _repository.createCompany(company);
+    }
 }

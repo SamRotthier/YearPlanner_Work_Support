@@ -66,7 +66,20 @@ public class ConsoleUI
 
     private void AddNewCustomerToPlanning()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Add Company"); 
+        Console.WriteLine("==========================");
+        Console.WriteLine("Name:");
+        string companyName = Console.ReadLine();
+        while (companyName == "" || companyName is null)
+        {
+            Console.WriteLine("Not a valid name");
+            companyName = Console.ReadLine();
+        }
+        
+        Console.WriteLine(companyName);
+        _manager.AddCompany(companyName);
+
+
     }
 
     private void DisplayPlanningForSearchedCustomer()
@@ -85,21 +98,29 @@ public class ConsoleUI
         foreach (Company company in listOfCompanies.Companies)
         {
             string[] months = new string[12];
-            foreach (Assignment assignment in company.Assignments)
+            if (company.Assignments.Count > 0)
             {
-                int dueMonth = assignment.ActionDate.Month;
-                months[dueMonth - 1] = "x";
+                foreach (Assignment assignment in company.Assignments)
+                {
+                    int dueMonth = assignment.ActionDate.Month;
+                    months[dueMonth - 1] = "x";
+                }
             }
+            
             string customerName = company.CompanyName.PadRight(13); // Ensure the customer name is fixed-width
             string[] formattedMonths = months.Select(m => (m ?? "").PadLeft(9)).ToArray(); // Each column is 9 characters wide
             Console.WriteLine($" {customerName} | {string.Join(" | ", formattedMonths)} | ");
-            
-            int count = 1;
-            foreach (Assignment task in company.Assignments)
+
+            if (company.Assignments.Count > 0)
             {
-                Console.WriteLine($"Task {count} Description: {task.AssignmentDescription}");
-                count++;
+                int count = 1;
+                foreach (Assignment task in company.Assignments)
+                {
+                    Console.WriteLine($"Task {count} Description: {task.AssignmentDescription}");
+                    count++;
+                }  
             }
+
         }
     }
 

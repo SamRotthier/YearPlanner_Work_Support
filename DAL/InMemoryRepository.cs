@@ -54,4 +54,9 @@ public class InMemoryRepository: IRepository
         return _listOfCompanies;
     }
 
+    public void createCompany(Company company)
+    {
+        _listOfCompanies.Companies.Add(company);
+        Console.WriteLine("Name of newly added company to the list: " + _listOfCompanies.Companies.Last().CompanyName);
+    }
 }
