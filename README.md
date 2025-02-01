@@ -6,3 +6,5 @@ The frontend is made with WPF
 Ideas:
 - Checkboxes
 - Reminder mails
+
+Can i make reminder mails with c# or do i need to use nodeJS for that?
