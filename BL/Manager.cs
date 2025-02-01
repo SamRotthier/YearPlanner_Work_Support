@@ -23,4 +23,15 @@ public class Manager : IManager
         Company company = new Company(companyName);
         _repository.createCompany(company);
     }
+
+    public void AddTaskToCompany(string companyName, string assignmentName, DateTime actionDate, string assignmentDescription)
+    {
+        Assignment madeAssignment = new Assignment(assignmentName, actionDate, assignmentDescription);
+        _repository.createTaskForCompany(companyName, madeAssignment);
+    }
+
+    public Company GetCompanyByName(string companyName)
+    {
+        return _repository.ReadCompanyByName(companyName);
+    }
 }

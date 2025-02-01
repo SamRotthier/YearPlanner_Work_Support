@@ -34,6 +34,8 @@ public class ConsoleUI
                 AddNewTaskToCustomer();
                 break;
         }
+
+        Run();
     }
     
     private int? WriteMenueAndReadInput()
@@ -61,7 +63,45 @@ public class ConsoleUI
 
     private void AddNewTaskToCustomer()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Add Task to Company"); 
+        Console.WriteLine("==========================");
+        Console.WriteLine("Company Name:");
+        string companyName = Console.ReadLine();
+        while (companyName == "" || companyName is null)
+        {
+            Console.WriteLine("Not a valid name");
+            companyName = Console.ReadLine();
+        }
+        
+        Console.WriteLine("Assignment name:");
+        string assignmentName = Console.ReadLine();
+        while (assignmentName == "" || assignmentName is null)
+        {
+            Console.WriteLine("Not a valid assignment name");
+            assignmentName = Console.ReadLine();
+        }
+        
+        Console.WriteLine("Assignment action date (YYYY-MM-DD):");
+        string lineB = Console.ReadLine();
+        DateTime assignmentActionDate;
+        while (!DateTime.TryParseExact(lineB, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None,
+                   out assignmentActionDate))
+        {
+            Console.WriteLine("Invalid date, please retry (format yyyy-MM-dd)");
+            lineB = Console.ReadLine();
+        }
+        
+        Console.WriteLine("Assignment description:");
+        string assignmentDescription = Console.ReadLine();
+        while (assignmentDescription == "" || assignmentDescription is null)
+        {
+            Console.WriteLine("Not a valid assignment description");
+            assignmentDescription = Console.ReadLine();
+        }
+        
+        _manager.AddTaskToCompany(companyName, assignmentName,assignmentActionDate ,assignmentDescription);
+        //TODO Testing
+        
     }
 
     private void AddNewCustomerToPlanning()
@@ -76,53 +116,75 @@ public class ConsoleUI
             companyName = Console.ReadLine();
         }
         
-        Console.WriteLine(companyName);
+        //Console.WriteLine(companyName);
         _manager.AddCompany(companyName);
-
-
     }
 
     private void DisplayPlanningForSearchedCustomer()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Search Company"); 
+        Console.WriteLine("==========================");
+        Console.WriteLine("Company Name:");
+        string companyName = Console.ReadLine();
+        while (companyName == "" || companyName is null)
+        {
+            Console.WriteLine("Not a valid name, Try again");
+            companyName = Console.ReadLine();
+        }
+        
+        //Console.WriteLine(companyName);
+        Company foundCompany = _manager.GetCompanyByName(companyName);
+        Console.WriteLine("Planning for : " + foundCompany.CompanyName);
+        DisplayBanner();
+        DisplayCompanyInfo(foundCompany);
     }
 
     private void DisplayPlanningForAllCustomers()
     {
         ListOfCompanies listOfCompanies = _manager.GetAllCompanies();
-        
-        Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------");
-        Console.WriteLine(" Customer Name | January   | February  | March     | April     | May       | June      | July      | August    | September | October   | November  | December  | ");
-        Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------");
+
+        DisplayBanner();
 
         foreach (Company company in listOfCompanies.Companies)
         {
-            string[] months = new string[12];
-            if (company.Assignments.Count > 0)
-            {
-                foreach (Assignment assignment in company.Assignments)
-                {
-                    int dueMonth = assignment.ActionDate.Month;
-                    months[dueMonth - 1] = "x";
-                }
-            }
-            
-            string customerName = company.CompanyName.PadRight(13); // Ensure the customer name is fixed-width
-            string[] formattedMonths = months.Select(m => (m ?? "").PadLeft(9)).ToArray(); // Each column is 9 characters wide
-            Console.WriteLine($" {customerName} | {string.Join(" | ", formattedMonths)} | ");
-
-            if (company.Assignments.Count > 0)
-            {
-                int count = 1;
-                foreach (Assignment task in company.Assignments)
-                {
-                    Console.WriteLine($"Task {count} Description: {task.AssignmentDescription}");
-                    count++;
-                }  
-            }
-
+            DisplayCompanyInfo(company);
         }
     }
 
+    private void DisplayBanner()
+    {
+        Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------");
+        Console.WriteLine(" Customer Name | January   | February  | March     | April     | May       | June      | July      | August    | September | October   | November  | December  | ");
+        Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------");
+    }
+
+    private void DisplayCompanyInfo(Company company)
+    {
+        string[] months = new string[12];
+        if (company.Assignments != null && company.Assignments.Count > 0)
+        {
+            foreach (Assignment assignment in company.Assignments)
+            {
+                int dueMonth = assignment.ActionDate.Month;
+                months[dueMonth - 1] = "x";
+            }
+        }
+            
+        string customerName = company.CompanyName.PadRight(13); // Ensure the customer name is fixed-width
+        string[] formattedMonths = months.Select(m => (m ?? "").PadLeft(9)).ToArray(); // Each column is 9 characters wide
+        Console.WriteLine($" {customerName} | {string.Join(" | ", formattedMonths)} | ");
+
+        if (company.Assignments != null && company.Assignments.Count > 0)
+        {
+            int count = 1;
+            foreach (Assignment task in company.Assignments)
+            {
+                Console.WriteLine($"Task {count} Description: {task.AssignmentDescription}");
+                count++;
+            }
+
+            Console.WriteLine();
+        }
+    }
 
 }

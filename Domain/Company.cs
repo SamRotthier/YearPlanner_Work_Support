@@ -8,7 +8,7 @@ public class Company
     public int CompanyId { get; set; }
     public string CompanyName { get; set; }
     
-    public ICollection<Assignment> Assignments { get; set; }
+    public ICollection<Assignment>? Assignments { get; set; }
     
     public Company(int companyId, string companyName, List<Assignment> assignments)
     {

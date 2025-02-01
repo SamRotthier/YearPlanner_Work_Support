@@ -59,4 +59,23 @@ public class InMemoryRepository: IRepository
         _listOfCompanies.Companies.Add(company);
         Console.WriteLine("Name of newly added company to the list: " + _listOfCompanies.Companies.Last().CompanyName);
     }
+
+    public void createTaskForCompany(string companyName, Assignment assignment)
+    {
+        _listOfCompanies.Companies.FirstOrDefault(x => x.CompanyName == companyName).Assignments.Add(assignment);
+    }
+
+    public Company ReadCompanyByName(string companyName)
+    {
+        try
+        {
+            Company companyByName = _listOfCompanies.Companies.FirstOrDefault(x => x.CompanyName == companyName) ?? throw new Exception();
+            return companyByName;
+        }
+        catch (Exception e)
+        { //TODO
+            Console.WriteLine("Company could not be found");
+            throw;
+        }
+    }
 }
