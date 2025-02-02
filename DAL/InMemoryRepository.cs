@@ -56,13 +56,16 @@ public class InMemoryRepository: IRepository
 
     public void createCompany(Company company)
     {
+        //TODO Error handling
         _listOfCompanies.Companies.Add(company);
         Console.WriteLine("Name of newly added company to the list: " + _listOfCompanies.Companies.Last().CompanyName);
     }
 
     public void createTaskForCompany(string companyName, Assignment assignment)
     {
+        //TODO Error handling
         _listOfCompanies.Companies.FirstOrDefault(x => x.CompanyName == companyName).Assignments.Add(assignment);
+        Console.WriteLine("The assignment was succesfully added to the list");
     }
 
     public Company ReadCompanyByName(string companyName)
@@ -73,7 +76,8 @@ public class InMemoryRepository: IRepository
             return companyByName;
         }
         catch (Exception e)
-        { //TODO
+        { 
+            //TODO Error handling
             Console.WriteLine("Company could not be found");
             throw;
         }

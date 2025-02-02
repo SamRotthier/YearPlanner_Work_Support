@@ -116,7 +116,6 @@ public class ConsoleUI
             companyName = Console.ReadLine();
         }
         
-        //Console.WriteLine(companyName);
         _manager.AddCompany(companyName);
     }
 
@@ -135,16 +134,12 @@ public class ConsoleUI
         //Console.WriteLine(companyName);
         Company foundCompany = _manager.GetCompanyByName(companyName);
         Console.WriteLine("Planning for : " + foundCompany.CompanyName);
-        DisplayBanner();
         DisplayCompanyInfo(foundCompany);
     }
 
     private void DisplayPlanningForAllCustomers()
     {
         ListOfCompanies listOfCompanies = _manager.GetAllCompanies();
-
-        DisplayBanner();
-
         foreach (Company company in listOfCompanies.Companies)
         {
             DisplayCompanyInfo(company);
@@ -160,6 +155,7 @@ public class ConsoleUI
 
     private void DisplayCompanyInfo(Company company)
     {
+        DisplayBanner();
         string[] months = new string[12];
         if (company.Assignments != null && company.Assignments.Count > 0)
         {
