@@ -18,14 +18,28 @@
                 </MenuItem>
                 <MenuItem Header="Help" DataContext="{Binding }">
                     <MenuItem Header="About" Command="{Binding }"/>
+                    <MenuItem Header="Create Empty List" Command="{Binding }"/>
                 </MenuItem>
             </Menu.Items>
         </Menu>
-        <DockPanel>
-            <TextBlock DockPanel.Dock="Bottom" 
+
+
+        <TextBlock DockPanel.Dock="Bottom" 
                        DataContext="{Binding }"
                        Text="{Binding }"/>
-            <TextBox DockPanel.Dock="Top" VerticalScrollBarVisibility="Visible"></TextBox>
-        </DockPanel>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0"></StackPanel>
+
+            <DataGrid Grid.Column="1">
+                
+            </DataGrid>
+            
+        </Grid>
     </DockPanel>
 </Window>
